@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>Title</title>
+    <!--    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=7d3327aceae7ab2e3c45d9462d9a111f"></script>-->
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=c874d18867bb7ce044e8481388dd739c"></script>
+    <!--    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=fe4d1f1e444be42f42e790efb1b10354"></script>-->
+    <script src="//webapi.amap.com/ui/1.1/main.js?v=1.1.1"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            width: 8000px;
+            height: 8000px;
+        }
+
+        #cityInputContainer {
+            position: absolute;
+            z-index: 9999;
+            top: 50px;
+            right: 30px;
+            width: 300px;
+        }
+
+        #cityInput {
+            width: 200px;
+            padding: 5px 5px;
+        }
+
+        /*#poiInfo {*/
+        /*    background: #fff;*/
+        /*}*/
+
+        /*.amap_lib_placeSearch .poibox.highlight {*/
+        /*    background-color: #CAE1FF;*/
+        /*}*/
+
+        /*.amap_lib_placeSearch .poi-more {*/
+        /*    display: none!important;*/
+        /*}*/
+    </style>
+    <script>
+        window.onload = function () {
+            let mapStyleList = ['00722be84e4ce8325712ac69a1b7052b', '5359193b3a37f3a01de16f8d92bbc3a9', '8ba043063fd4a137c8813ec6af95bb64', '17e7a773be10a2b4ee426069c25f0f0b','4d3a3c3a4fdeabb729cf9e8423f5fec6']
+            var map = new AMap.Map('container', {
+                zoom: 11,
+                center: [120.41, 36.07],
+                collision: false,
+                features: ['road', 'bg', 'building'],
+                mapStyle: 'amap://styles/' + mapStyleList[1]
+            });
+
+            AMapUI.loadUI(['control/BasicControl'], function (BasicControl) {
+                map.addControl(new BasicControl.Zoom({
+                    position: 'lt',
+                    showZoomNum: true
+                }));
+            });
+
+
+            document.querySelector('#cityBtn').onclick = gotoCity;
+            document.querySelector('#cityInput').onkeydown = function(e) {
+                if (e.keyCode === 13) {
+                    gotoCity();
+                    return false;
+                }
+                return true;
+            };
+
+
+            function gotoCity() {
+                let val = document.querySelector('#cityInput').value; //可以是cityname、adcode、citycode
+                if (!val) {
+                    val = "青岛市";
+                }
+                map.setCity(val);
+                // setTimeout(3000, function () {
+
+                // alert(map.getZoom());
+                // });
+                // log.info(`已跳转至${val}`);
+            }
+
+
+            // document.getElementById('showZoomBtn').onclick = function () {
+            //     alert(map.getZoom());
+            // };
+            document.getElementById('zoomBtn').onclick = function () {
+                map.setZoom(16.5);
+            };
+        }
+    </script>
+</head>
+<body>
+<div id="cityInputContainer">
+    <input id="cityInput" placeholder="广州市" type="text"/>
+    <button id="cityBtn">go city</button>
+    <button id="zoomBtn">setZoom</button>
+</div>
+<!--<div class="input-item">-->
+<!--    <input id='city-name' placeholder="北京市" type="text" style="margin-right:1rem;"><button class="btn" id="query">去指定城市</button>-->
+<!--</div>-->
+<div id="container"></div>
+<!--<button id="showZoomBtn">showZoom</button>-->
+</body>
+</html>

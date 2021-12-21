@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery.1.12.4.js"></script>
+    <!--    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=7d3327aceae7ab2e3c45d9462d9a111f"></script>-->
+    <script type="text/javascript"
+            src="https://webapi.amap.com/maps?v=2.0&key=7d3327aceae7ab2e3c45d9462d9a111f"></script>
+    <!--    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=fe4d1f1e444be42f42e790efb1b10354"></script>-->
+    <script src="//webapi.amap.com/ui/1.1/main.js?v=1.1.1"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .hide {
+            display: none !important;
+        }
+
+        #container {
+            width: 8000px;
+            height: 8000px;
+        }
+
+        #cityInputContainer {
+            position: fixed;
+            z-index: 9999;
+            top: 50px;
+            right: 30px;
+            width: 300px;
+        }
+
+        #cityInput {
+            width: 200px;
+            padding: 5px 5px;
+        }
+
+        #panBtnContainer {
+            position: fixed;
+            z-index: 9999;
+            bottom: 50px;
+            right: 30px;
+        }
+
+
+        .amap-ui-control-container {
+            position: fixed !important;
+        }
+
+        /*#poiInfo {*/
+        /*    background: #fff;*/
+        /*}*/
+
+        /*.amap_lib_placeSearch .poibox.highlight {*/
+        /*    background-color: #CAE1FF;*/
+        /*}*/
+
+        /*.amap_lib_placeSearch .poi-more {*/
+        /*    display: none!important;*/
+        /*}*/
+    </style>
+    <script>
+        window.onload = function () {
+            let
+                centerList = {
+                    beijing: [113.26, 23.13],
+                    guangzhou: [113.26, 23.12],
+                    shanghai: [121.48, 31.23],
+                    shenzhen: [114.05, 22.52],
+                    hangzhou: [120.19, 30.22],
+                    nanjing: [118.79, 32.04],
+                    chengdu: [104.04, 30.64],
+                    chongqing: [106.56, 29.55],
+                    changsha: [112.93, 28.23],
+                    wuhan: [114.30, 30.60],
+                    suzhou: [120.61, 31.33],
+                    dalian: [121.61, 38.91],
+                    tianjin: [117.22, 39.10],
+                    xian: [108.9, 34.29],
+                    xuchang: [113.83, 34.04],
+                    wulumuqi: [87.64, 43.83],
+                    zhuhai: [113.54, 22.26]
+                },
+                mapStyleList = ['6ae9cf0954f1151f317d24073fc21ea7', 'fe4d1f1e444be42f42e790efb1b10354', '8ba043063fd4a137c8813ec6af95bb64', '17e7a773be10a2b4ee426069c25f0f0b', '4d3a3c3a4fdeabb729cf9e8423f5fec6']
+            var map = new AMap.Map('container', {
+                zoom: 16,
+                center: centerList.zhuhai,
+                collision: false,
+                features: ['road', 'bg', 'building'],
+                mapStyle: 'amap://styles/' + mapStyleList[0],
+                animateEnable: false
+            });
+
+            AMapUI.loadUI(['control/BasicControl'], function (BasicControl) {
+                map.addControl(new BasicControl.Zoom({
+                    position: 'lt',
+                    showZoomNum: true
+                }));
+            });
+
+
+            document.querySelector('#cityBtn').onclick = gotoCity;
+            document.querySelector('#cityInput').onkeydown = function (e) {
+                if (e.keyCode === 13) {
+                    gotoCity();
+                    return false;
+                }
+                return true;
+            };
+
+            $('#panToLeft').click(function () {
+                map.panBy(-7800, 0);
+            });
+            $('#panToTop').click(function () {
+                map.panBy(0, -7800);
+            });
+            $('#panToRight').click(function () {
+                map.panBy(7800, 0);
+            });
+            $('#panToBottom').click(function () {
+                map.panBy(0, 7800);
+            });
+
+
+            function gotoCity() {
+                let val = document.querySelector('#cityInput').value; //可以是cityname、adcode、citycode
+                if (!val) {
+                    val = "广州市";
+                }
+                map.setCity(val);
+                // setTimeout(3000, function () {
+
+                // alert(map.getZoom());
+                // });
+                // log.info(`已跳转至${val}`);
+            }
+
+
+            // document.getElementById('showZoomBtn').onclick = function () {
+            //     alert(map.getZoom());
+            // };
+            document.getElementById('zoomBtn').onclick = function () {
+                map.setZoom(16);
+            };
+
+            window.document.onkeyup = function (e) {
+                if (e.ctrlKey && e.keyCode === 49) {
+                    $('.amap-ui-control-container').hide();
+                    $('#cityInputContainer').hide();
+                    $('#panBtnContainer').hide();
+                    $('.amap-logo').addClass('hide');
+                    $('.amap-copyright').addClass('hide');
+                    // alert('hide');
+                } else if (e.ctrlKey && e.keyCode === 50) {
+                    $('.amap-ui-control-container').show();
+                    $('#cityInputContainer').show();
+                    $('#panBtnContainer').show();
+                    // alert('show');
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="cityInputContainer">
+    <input id="cityInput" placeholder="广州市" type="text"/>
+    <button id="cityBtn">go city</button>
+    <button id="zoomBtn">setZoom</button>
+</div>
+<div id="panBtnContainer">
+    <button id="panToLeft">左移</button>
+    <button id="panToTop">上移</button>
+    <button id="panToRight">右移</button>
+    <button id="panToBottom">下移</button>
+</div>
+<!--<div class="input-item">-->
+<!--    <input id='city-name' placeholder="北京市" type="text" style="margin-right:1rem;"><button class="btn" id="query">去指定城市</button>-->
+<!--</div>-->
+<div id="container"></div>
+<!--<button id="showZoomBtn">showZoom</button>-->
+</body>
+</html>
