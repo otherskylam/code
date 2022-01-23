@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mapbox</title>
+    <script type="text/javascript" src="js/jquery.1.12.4.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet'/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .hide {
+            display: none !important;
+        }
+
+        /*#container {*/
+        /*    width: 8000px;*/
+        /*    height: 8000px;*/
+        /*}*/
+
+        #cityInputContainer {
+            position: fixed;
+            z-index: 9999;
+            top: 50px;
+            right: 30px;
+            width: 300px;
+        }
+
+        #cityInput {
+            width: 200px;
+            padding: 5px 5px;
+        }
+
+        #panBtnContainer {
+            position: fixed;
+            z-index: 9999;
+            bottom: 50px;
+            right: 30px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            mapboxgl.accessToken = 'pk.eyJ1Ijoib3RoZXJza3lsYW0iLCJhIjoiY2t4Z3lkbGRlMDB5aDJvb2N1MjAzYm9tcSJ9.MSF3EUvhmhknQnahDpNAPA';
+            var map = new mapboxgl.Map({
+                container: 'map',
+                // style: 'mapbox://styles/mapbox/streets-v11',
+                style: 'mapbox://styles/otherskylam/ckxgykhx00cb914tao6u511js',
+                zoom: 15,
+                center: [100.52, 13.74],
+                scrollZoom: false,
+                boxZoom: false,
+                dragRotate: false,
+                dragPsn: false,
+                keyboard: false,
+                doubleClickZoom: false
+            });
+            // setTimeout(function () {
+            //     alert(map.getCenter())
+            // }, 1000)
+
+
+
+
+            $('#panToLeft').click(function () {
+                map.panBy([7800, 0]);
+            });
+            $('#panToTop').click(function () {
+                map.panBy([0, 7800]);
+            });
+            $('#panToRight').click(function () {
+                map.panBy([-7800, 0]);
+            });
+            $('#panToBottom').click(function () {
+                map.panBy([0, -7800]);
+            });
+
+            window.document.onkeyup = function (e) {
+                if (e.ctrlKey && e.keyCode === 49) {
+                    // $('.amap-ui-control-container').hide();
+                    // $('#cityInputContainer').hide();
+                    $('#panBtnContainer').hide();
+                    $('.mapboxgl-ctrl-logo').addClass('hide');
+                    $('.mapboxgl-ctrl-attrib-inner').addClass('hide');
+                    // alert('hide');
+                } else if (e.ctrlKey && e.keyCode === 50) {
+                    // $('.amap-ui-control-container').show();
+                    // $('#cityInputContainer').show();
+                    $('#panBtnContainer').show();
+                    // alert('show');
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id='map' style='width: 8000px; height: 8000px;'></div>
+
+<div id="panBtnContainer">
+    <button id="panToLeft">左移</button>
+    <button id="panToTop">上移</button>
+    <button id="panToRight">右移</button>
+    <button id="panToBottom">下移</button>
+</div>
+</body>
+</html>
