@@ -43,13 +43,24 @@
     </style>
     <script>
         window.onload = function () {
+            let
+                centerList = {
+                    bangkok: [100.52, 13.74],
+                    paris: [2.351, 48.856],
+                    tokyo: [139.753, 35.681],
+                    london: [-0.127, 51.507],
+                    newyork: [-73.958, 40.751],
+                    boston: [-71.055, 42.359],
+                    tacloban: [125.000, 11.218],
+                };
+
             mapboxgl.accessToken = 'pk.eyJ1Ijoib3RoZXJza3lsYW0iLCJhIjoiY2t4Z3lkbGRlMDB5aDJvb2N1MjAzYm9tcSJ9.MSF3EUvhmhknQnahDpNAPA';
             var map = new mapboxgl.Map({
                 container: 'map',
                 // style: 'mapbox://styles/mapbox/streets-v11',
                 style: 'mapbox://styles/otherskylam/ckxgykhx00cb914tao6u511js',
-                zoom: 15,
-                center: [100.52, 13.74],
+                zoom: 17,
+                center: centerList.tacloban,
                 scrollZoom: false,
                 boxZoom: false,
                 dragRotate: false,
@@ -60,8 +71,6 @@
             // setTimeout(function () {
             //     alert(map.getCenter())
             // }, 1000)
-
-
 
 
             $('#panToLeft').click(function () {
