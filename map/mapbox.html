@@ -45,6 +45,7 @@
         window.onload = function () {
             let
                 centerList = {
+                    china: {sLocation: {jinwan: [113.336, 22.098]}},
                     bangkok: [100.52, 13.74],
                     paris: [2.351, 48.856],
                     tokyo: [139.753, 35.681],
@@ -53,15 +54,19 @@
                     boston: [-71.055, 42.359],
                     tacloban: [125.000, 11.218],
                     sydney: [151.218, -33.878]
-                };
+                },
+                styleList = {
+                    bw: {name: '黑白', style: 'mapbox://styles/otherskylam/ckxgykhx00cb914tao6u511js'},
+                    rg: {name: '红绿', style: 'mapbox://styles/otherskylam/cl08uh5tc00mj15oa2x1c7ld0'}
+                }
 
             mapboxgl.accessToken = 'pk.eyJ1Ijoib3RoZXJza3lsYW0iLCJhIjoiY2t4Z3lkbGRlMDB5aDJvb2N1MjAzYm9tcSJ9.MSF3EUvhmhknQnahDpNAPA';
             var map = new mapboxgl.Map({
                 container: 'map',
                 // style: 'mapbox://styles/mapbox/streets-v11',
-                style: 'mapbox://styles/otherskylam/ckxgykhx00cb914tao6u511js',
+                style: styleList.rg.style,
                 zoom: 15,
-                center: centerList.sydney,
+                center: centerList.china.sLocation.jinwan,
                 scrollZoom: false,
                 boxZoom: false,
                 dragRotate: false,
