@@ -45,7 +45,21 @@
         window.onload = function () {
             let
                 centerList = {
-                    china: {sLocation: {jinwan: [113.336, 22.098]}},
+                    china: {
+                        guangzhou: [113.309, 23.101],
+                        shenzhen: [114.033, 22.596],
+                        beijing: [116.391, 39.917],
+                        shanghai: [121.469, 31.220],
+                        hangzhou: [120.171, 30.303],
+                        chengdu: [104.063, 30.663],
+                        chongqing: [106.529, 29.540],
+                        nanjing: [118.760, 32.021],
+                        wuhan: [114.273, 30.573],
+                        changsha: [113.001, 28.198],
+                        tianjing: [117.193, 39.131],
+                        dalian: [121.645, 38.965],
+                        sLocation: {jinwan: [113.336, 22.098]}
+                    },
                     bangkok: [100.52, 13.74],
                     paris: [2.351, 48.856],
                     tokyo: [139.753, 35.681],
@@ -53,7 +67,8 @@
                     newyork: [-73.958, 40.751],
                     boston: [-71.055, 42.359],
                     tacloban: [125.000, 11.218],
-                    sydney: [151.218, -33.878]
+                    sydney: [151.218, -33.878],
+                    melbourne: [144.966, -37.823]
                 },
                 styleList = {
                     bw: {name: '黑白', style: 'mapbox://styles/otherskylam/ckxgykhx00cb914tao6u511js'},
@@ -65,8 +80,8 @@
                 container: 'map',
                 // style: 'mapbox://styles/mapbox/streets-v11',
                 style: styleList.rg.style,
-                zoom: 15,
-                center: centerList.china.sLocation.jinwan,
+                zoom: 15,// 一般是15
+                center: centerList.china.guangzhou,
                 scrollZoom: false,
                 boxZoom: false,
                 dragRotate: false,
