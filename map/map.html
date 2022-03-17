@@ -67,7 +67,7 @@
         window.onload = function () {
             let
                 centerList = {
-                    beijing: [113.26, 23.13],
+                    beijing: [116.41, 39.92],
                     guangzhou: [113.26, 23.12],
                     shanghai: [121.48, 31.23],
                     shenzhen: [114.05, 22.52],
@@ -97,12 +97,15 @@
                     hainan: [109.80, 19.20],//海南
                     qiongzhong: [109.84, 19.03],//琼中
                     wanning: [110.39, 18.79],//万宁
+                    haerbin: [126.63, 45.73],//哈尔滨
+                    chuzhou: [118.33, 32.25],//滁州
+                    zhuzhou: [113.09, 27.83],//株洲
                     sLocation: {wuxue: [115.59, 29.86], ningcheng: [119.32, 41.60], beibei: [106.39, 29.8], longgang: [114.24, 22.72]}
                 },
                 mapStyleList = ['6ae9cf0954f1151f317d24073fc21ea7', 'fe4d1f1e444be42f42e790efb1b10354', '8ba043063fd4a137c8813ec6af95bb64', '17e7a773be10a2b4ee426069c25f0f0b', '4d3a3c3a4fdeabb729cf9e8423f5fec6']
             var map = new AMap.Map('container', {
                 zoom: 16,// 一般是16
-                center: centerList.wanning,
+                center: centerList.beijing,
                 collision: false,
                 features: ['road', 'bg', 'building'],
                 mapStyle: 'amap://styles/' + mapStyleList[1],
