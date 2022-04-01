@@ -45,6 +45,18 @@
         window.onload = function () {
             let
                 centerList = {
+                    bangkok: [100.52, 13.74],
+                    paris: [2.351, 48.856],
+                    tokyo: [139.753, 35.681],
+                    london: [-0.127, 51.507],
+                    newyork: [-73.958, 40.751],
+                    boston: [-71.055, 42.359],
+                    tacloban: [125.000, 11.218],
+                    sydney: [151.218, -33.878],
+                    melbourne: [144.966, -37.823],
+                    Amsterdam: [4.896, 52.372],//阿姆斯特丹
+                    Sheffield: [-1.470, 53.381],//谢菲尔德
+                    Brisbane: [153.023, -27.461],//布里斯班
                     china: {
                         guangzhou: [113.309, 23.101],
                         shenzhen: [114.033, 22.596],
@@ -58,17 +70,10 @@
                         changsha: [113.001, 28.198],
                         tianjing: [117.193, 39.131],
                         dalian: [121.645, 38.965],
+                        anshun: [105.929, 26.248],//安顺
+                        hefei: [117.277, 31.855],//合肥
                         sLocation: {jinwan: [113.336, 22.098]}
-                    },
-                    bangkok: [100.52, 13.74],
-                    paris: [2.351, 48.856],
-                    tokyo: [139.753, 35.681],
-                    london: [-0.127, 51.507],
-                    newyork: [-73.958, 40.751],
-                    boston: [-71.055, 42.359],
-                    tacloban: [125.000, 11.218],
-                    sydney: [151.218, -33.878],
-                    melbourne: [144.966, -37.823]
+                    }
                 },
                 styleList = {
                     bw: {name: '黑白', style: 'mapbox://styles/otherskylam/ckxgykhx00cb914tao6u511js'},
@@ -79,9 +84,9 @@
             var map = new mapboxgl.Map({
                 container: 'map',
                 // style: 'mapbox://styles/mapbox/streets-v11',
-                style: styleList.bw.style,
+                style: styleList.rg.style,
                 zoom: 15,// 一般是15
-                center: centerList.china.beijing,
+                center: centerList.Sheffield,
                 scrollZoom: false,
                 boxZoom: false,
                 dragRotate: false,
@@ -92,7 +97,6 @@
             // setTimeout(function () {
             //     alert(map.getCenter())
             // }, 1000)
-
 
             $('#panToLeft').click(function () {
                 map.panBy([7800, 0]);
@@ -122,6 +126,13 @@
                     // alert('show');
                 }
             }
+
+
+            var mapLoad = () => {
+                alert('done!');
+            };
+            // map.on('load', mapLoad);
+            map.on('idle', mapLoad);
         }
     </script>
 </head>
