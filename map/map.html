@@ -103,19 +103,23 @@
                     zhuzhou: [113.09, 27.83],//株洲
                     haikou: [110.29, 19.99],//海口
                     anshun: [105.936, 26.23],//安顺
+                    taian: [117.09, 36.17],//泰安
+                    anshan: [122.99, 41.09],//鞍山
+                    hengyang: [112.56, 26.91],//衡阳
                     sLocation: {
                         wuxue: [115.59, 29.86],
                         ningcheng: [119.32, 41.60],
                         beibei: [106.39, 29.8],
                         longgang: [114.24, 22.72],
                         jixi: [118.57, 30.06],
-                        linqu: [118.54, 36.51]//临朐
+                        linqu: [118.54, 36.51],//临朐
+                        shehong: [105.39, 30.87]//射洪
                     }
                 },
                 mapStyleList = ['6ae9cf0954f1151f317d24073fc21ea7', 'fe4d1f1e444be42f42e790efb1b10354', '8ba043063fd4a137c8813ec6af95bb64', '17e7a773be10a2b4ee426069c25f0f0b', '4d3a3c3a4fdeabb729cf9e8423f5fec6']
             var map = new AMap.Map('container', {
-                zoom: 17,// 一般是16
-                center: centerList.sLocation.linqu,
+                zoom: 16,// 一般是16
+                center: centerList.hengyang,
                 collision: false,
                 features: ['road', 'bg', 'building'],
                 mapStyle: 'amap://styles/' + mapStyleList[1],

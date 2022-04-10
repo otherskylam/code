@@ -57,6 +57,7 @@
                     Amsterdam: [4.896, 52.372],//阿姆斯特丹
                     Sheffield: [-1.470, 53.381],//谢菲尔德
                     Brisbane: [153.023, -27.461],//布里斯班
+                    rabat: [-6.851, 33.985],//拉巴特
                     china: {
                         guangzhou: [113.309, 23.101],
                         shenzhen: [114.033, 22.596],
@@ -72,6 +73,7 @@
                         dalian: [121.645, 38.965],
                         anshun: [105.929, 26.248],//安顺
                         hefei: [117.277, 31.855],//合肥
+                        qingdao: [120.365, 36.211],//青岛
                         sLocation: {jinwan: [113.336, 22.098]}
                     }
                 },
@@ -84,9 +86,9 @@
             var map = new mapboxgl.Map({
                 container: 'map',
                 // style: 'mapbox://styles/mapbox/streets-v11',
-                style: styleList.rg.style,
+                style: styleList.bw.style,
                 zoom: 15,// 一般是15
-                center: centerList.Sheffield,
+                center: centerList.paris,
                 scrollZoom: false,
                 boxZoom: false,
                 dragRotate: false,
