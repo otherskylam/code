@@ -61,6 +61,7 @@
                     wageningen: [5.666, 51.974],//瓦赫宁根
                     essen: [7.015, 51.458],//德国·北威州·埃森
                     Birmingham: [-1.902, 52.479],//英国·伯明翰
+                    daegu: [128.600, 35.866],//韩国·大邱
                     china: {
                         guangzhou: [113.309, 23.101],
                         shenzhen: [114.033, 22.596],
@@ -91,9 +92,9 @@
             var map = new mapboxgl.Map({
                 container: 'map',
                 // style: 'mapbox://styles/mapbox/streets-v11',
-                style: styleList.rg.style,
-                zoom: 15,// 一般是15
-                center: centerList.paris,
+                style: styleList.bw.style,
+                zoom: 16,// 一般是15
+                center: centerList.daegu,
                 scrollZoom: false,
                 boxZoom: false,
                 dragRotate: false,
