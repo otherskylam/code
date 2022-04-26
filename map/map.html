@@ -95,6 +95,7 @@
                     fuzhou: [119.31, 26.05],
                     shenyang: [123.45, 41.71],
                     meizhou: [116.10, 24.28],
+                    zhongshan: [113.39, 22.51],//中山
                     hainan: [109.80, 19.20],//海南
                     qiongzhong: [109.84, 19.03],//琼中
                     wanning: [110.39, 18.79],//万宁
@@ -121,8 +122,8 @@
                 },
                 mapStyleList = ['6ae9cf0954f1151f317d24073fc21ea7', 'fe4d1f1e444be42f42e790efb1b10354', '8ba043063fd4a137c8813ec6af95bb64', '17e7a773be10a2b4ee426069c25f0f0b', '4d3a3c3a4fdeabb729cf9e8423f5fec6']
             var map = new AMap.Map('container', {
-                zoom: 18,// 一般是16
-                center: centerList.chongqing1,
+                zoom: 16,// 一般是16
+                center: centerList.zhongshan,
                 collision: false,
                 features: ['road', 'bg', 'building'],
                 mapStyle: 'amap://styles/' + mapStyleList[1],
