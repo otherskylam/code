@@ -63,6 +63,8 @@
                     Birmingham: [-1.902, 52.479],//英国·伯明翰
                     daegu: [128.600, 35.866],//韩国·大邱
                     LosAngeles: [-118.250, 34.008],//美国·洛杉矶
+                    brussels: [4.351, 50.846],//比利时·
+                    Ottawa: [-75.690, 45.421],//加拿大
                     china: {
                         guangzhou: [113.309, 23.101],
                         shenzhen: [114.033, 22.596],
@@ -81,12 +83,14 @@
                         qingdao: [120.365, 36.211],//青岛
                         tianshui: [105.731, 34.581],//天水
                         haining: [120.665, 30.507],//海宁
+                        pudong: [121.682, 31.087],//上海·浦东
                         sLocation: {jinwan: [113.336, 22.098]}
                     }
                 },
                 styleList = {
                     bw: {name: '黑白', style: 'mapbox://styles/otherskylam/ckxgykhx00cb914tao6u511js'},
-                    rg: {name: '红绿', style: 'mapbox://styles/otherskylam/cl08uh5tc00mj15oa2x1c7ld0'}
+                    rg: {name: '红绿', style: 'mapbox://styles/otherskylam/cl08uh5tc00mj15oa2x1c7ld0'},
+                    rg1: {name: '红绿1', style: 'mapbox://styles/otherskylam/cl0tcih7r000i14or33mpq36z'},//屏蔽字，15以下的问题
                 }
 
             mapboxgl.accessToken = 'pk.eyJ1Ijoib3RoZXJza3lsYW0iLCJhIjoiY2t4Z3lkbGRlMDB5aDJvb2N1MjAzYm9tcSJ9.MSF3EUvhmhknQnahDpNAPA';
@@ -95,7 +99,7 @@
                 // style: 'mapbox://styles/mapbox/streets-v11',
                 style: styleList.rg.style,
                 zoom: 15,// 一般是15
-                center: centerList.china.qingdao,
+                center: centerList.Ottawa,
                 scrollZoom: false,
                 boxZoom: false,
                 dragRotate: false,
@@ -106,6 +110,11 @@
             // setTimeout(function () {
             //     alert(map.getCenter())
             // }, 1000)
+            // var scale = new mapboxgl.ScaleControl({
+            //     maxWidth: 100,
+            //     unit: 'metric'
+            // });
+            // map.addControl(scale, 'top-left');
 
             $('#panToLeft').click(function () {
                 map.panBy([7800, 0]);
