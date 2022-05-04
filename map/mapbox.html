@@ -53,7 +53,7 @@
                     boston: [-71.055, 42.359],
                     tacloban: [125.000, 11.218],
                     sydney: [151.218, -33.878],
-                    melbourne: [144.966, -37.823],
+                    melbourne: [144.966, -37.823],//澳大利亚·墨尔本
                     Amsterdam: [4.896, 52.372],//阿姆斯特丹
                     Sheffield: [-1.470, 53.381],//谢菲尔德
                     Brisbane: [153.023, -27.461],//布里斯班
@@ -98,9 +98,9 @@
             var map = new mapboxgl.Map({
                 container: 'map',
                 // style: 'mapbox://styles/mapbox/streets-v11',
-                style: styleList.rg.style,
+                style: styleList.bw.style,
                 zoom: 15,// 一般是15
-                center: centerList.china.anyang,
+                center: centerList.china.nanjing,
                 scrollZoom: false,
                 boxZoom: false,
                 dragRotate: false,
