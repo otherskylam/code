@@ -54,6 +54,7 @@
                     tacloban: [125.000, 11.218],
                     sydney: [151.218, -33.878],
                     melbourne: [144.966, -37.823],//澳大利亚·墨尔本
+                    brisbane: [153.029, -27.481],//澳大利亚·布里斯班
                     Amsterdam: [4.896, 52.372],//阿姆斯特丹
                     Sheffield: [-1.470, 53.381],//谢菲尔德
                     Brisbane: [153.023, -27.461],//布里斯班
@@ -65,6 +66,12 @@
                     LosAngeles: [-118.250, 34.008],//美国·洛杉矶
                     brussels: [4.351, 50.846],//比利时·
                     Ottawa: [-75.690, 45.421],//加拿大
+                    NewZealand: [171.779, -41.838],//新西兰
+                    Auckland: [174.763, -36.852],//新西兰·奥克兰
+                    tauranga: [176.167, -37.685],//新西兰·陶朗加
+                    Wellington: [174.777, -41.288],//新西兰·惠灵顿
+                    jablonec: [15.171, 50.724],//捷克·亚布洛内茨  jablonec nad nisou
+                    southampton: [-1.415, 50.924],//英国·南安普顿
                     china: {
                         guangzhou: [113.309, 23.101],
                         shenzhen: [114.033, 22.596],
@@ -85,22 +92,31 @@
                         haining: [120.665, 30.507],//海宁
                         pudong: [121.682, 31.087],//上海·浦东
                         anyang: [114.346, 36.095],//河南·安阳
+                        guiyang: [106.717, 26.579],//贵州·贵阳
+                        zunyi: [106.933, 27.704],//贵州·遵义
+                        haikou: [110.317, 20.029],//海南·海口
+                        nanning: [108.354, 22.807],//广西·南宁
+                        nantong: [120.900, 31.981],//江苏·南通
+                        cangzhou: [116.849, 38.303],//河北·沧州
+                        puyang: [115.029, 35.763],//河南·濮阳
+                        dangshan: [116.345, 34.427],//安徽·宿州·砀山
                         sLocation: {jinwan: [113.336, 22.098]}
                     }
                 },
                 styleList = {
                     bw: {name: '黑白', style: 'mapbox://styles/otherskylam/ckxgykhx00cb914tao6u511js'},
                     rg: {name: '红绿', style: 'mapbox://styles/otherskylam/cl08uh5tc00mj15oa2x1c7ld0'},
-                    rg1: {name: '红绿1', style: 'mapbox://styles/otherskylam/cl0tcih7r000i14or33mpq36z'},//屏蔽字，15以下的问题
+                    rg1: {name: '红绿1', style: 'mapbox://styles/otherskylam/cl0tcih7r000i14or33mpq36z'},//备用！（屏蔽字，15以下的问题）-该问题rg已同步解决
+                    mdla: {name: '蒙德里安', style: 'mapbox://styles/otherskylam/cl2t9l1o200zx14o9ktt7kvkn'}
                 }
 
             mapboxgl.accessToken = 'pk.eyJ1Ijoib3RoZXJza3lsYW0iLCJhIjoiY2t4Z3lkbGRlMDB5aDJvb2N1MjAzYm9tcSJ9.MSF3EUvhmhknQnahDpNAPA';
             var map = new mapboxgl.Map({
                 container: 'map',
                 // style: 'mapbox://styles/mapbox/streets-v11',
-                style: styleList.bw.style,
-                zoom: 15,// 一般是15
-                center: centerList.china.nanjing,
+                style: styleList.rg.style,
+                zoom: 14,// 一般是15
+                center: centerList.china.shanghai,
                 scrollZoom: false,
                 boxZoom: false,
                 dragRotate: false,

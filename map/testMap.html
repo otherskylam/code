@@ -20,68 +20,60 @@
 </head>
 <body>
 <div id="container"></div>
-<div class="info">
-    <h4 id="text"></h4>
-    <p>当前级别：<span id="map-zoom">15</span></p>
-</div>
-<div class="input-card" style="width:16rem">
-    <h4>地图缩放相关事件</h4>
-    <div>
-        <div class="input-item">
-            <button id="zoomOn" class="btn" style="margin-right:1rem;">绑定事件</button>
-            <button id="zoomOff" class="btn">解绑事件</button>
-        </div>
-    </div>
-</div>
-<div id="tip"></div>
+<!--<div class="info">-->
+<!--    <h4 id="text"></h4>-->
+<!--    <p>当前级别：<span id="map-zoom">15</span></p>-->
+<!--</div>-->
+<!--<div class="input-card" style="width:16rem">-->
+<!--    <h4>地图缩放相关事件</h4>-->
+<!--    <div>-->
+<!--        <div class="input-item">-->
+<!--            <button id="zoomOn" class="btn" style="margin-right:1rem;">绑定事件</button>-->
+<!--            <button id="zoomOff" class="btn">解绑事件</button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div id="tip"></div>-->
 <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=7d3327aceae7ab2e3c45d9462d9a111f"></script>
 <!--<script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>-->
 <script type="text/javascript">
-    //初始化地图对象，加载地图
-    var map = new AMap.Map("container", {
-        zoom: 11,
-        center: [113.24, 23.15],
-        collision: false,
-        features: ['road', 'bg', 'building'],
-        mapStyle: 'amap://styles/fe4d1f1e444be42f42e790efb1b10354'
+    let map = new AMap.Map("container", {   //maps是容器的id名
+        // zoom: 4, //地图显示的缩放级别
+        // layers: [
+        //     new AMap.TileLayer.Satellite({  //卫星模式
+        //         zIndex: 0
+        //     })
+    zoom: 10,
+        // ],
+        mapStyle: "amap://styles/darkblue"
+        //showIndoorMap: false
     });
 
+    new AMap.DistrictSearch({
+        extensions: "all",
+        subdistrict: 0
+    }).search("山西省", function(status, result) { //只需将山西省换成你要显示的省名就可以了
+        // 外多边形坐标数组和内多边形坐标数组
+        var outer = [
+            new AMap.LngLat(-360, 90, true),
+            new AMap.LngLat(-360, -90, true),
+            new AMap.LngLat(360, -90, true),
+            new AMap.LngLat(360, 90, true)
+        ];
+        var holes = result.districtList[0].boundaries;
 
-    var logMapinfo = function (){
-        var zoom = map.getZoom(); //获取当前地图级别
-        document.querySelector("#map-zoom").innerText = zoom;
-    };
-    logMapinfo();
-
-    function mapZoomstart(){
-        // document.querySelector("#text").innerText = '缩放开始';
-    }
-    function mapZoom(){
-        logMapinfo();
-        // document.querySelector("#text").innerText = '正在缩放';
-    }
-    function mapZoomend(){
-        // document.querySelector("#text").innerText = '缩放结束';
-    }
-
-    // 事件绑定
-    function zoomOn(){
-        // log.success("绑定事件!");
-        map.on('zoomstart', mapZoomstart);
-        map.on('zoomchange', mapZoom);
-        map.on('zoomend', mapZoomend);
-    }
-    // 解绑事件
-    function zoomOff(){
-        // log.success("解除事件绑定!");
-        map.off('zoomstart', mapZoomstart);
-        map.off('zoomchange', mapZoom);
-        map.off('zoomend', mapZoomend);
-    }
-
-    // 给按钮绑定事件
-    document.getElementById("zoomOn").onclick = zoomOn;
-    document.getElementById("zoomOff").onclick = zoomOff;
+        var pathArray = [outer];
+        pathArray.push.apply(pathArray, holes);
+        var polygon = new AMap.Polygon({
+            pathL: pathArray,
+            // strokeColor: '#f00',
+            strokeWeight: 1,
+            fillColor: "#051a49",
+            fillOpacity: 1
+        });
+        polygon.setPath(pathArray);
+        that.map.add(polygon);
+    });
 
 
 </script>
