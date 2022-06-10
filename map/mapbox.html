@@ -55,6 +55,7 @@
                     sydney: [151.218, -33.878],
                     melbourne: [144.966, -37.823],//澳大利亚·墨尔本
                     brisbane: [153.029, -27.481],//澳大利亚·布里斯班
+                    canberra: [149.128, -35.282],//澳大利亚·堪培拉
                     Amsterdam: [4.896, 52.372],//阿姆斯特丹
                     Sheffield: [-1.470, 53.381],//谢菲尔德
                     Brisbane: [153.023, -27.461],//布里斯班
@@ -119,9 +120,9 @@
             var map = new mapboxgl.Map({
                 container: 'map',
                 // style: 'mapbox://styles/mapbox/streets-v11',
-                style: styleList.rg.style,
+                style: styleList.bw.style,
                 zoom: 15,// 一般是15
-                center: centerList.chattanooga,
+                center: centerList.canberra,
                 scrollZoom: false,
                 boxZoom: false,
                 dragRotate: false,
