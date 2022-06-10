@@ -72,6 +72,8 @@
                     Wellington: [174.777, -41.288],//新西兰·惠灵顿
                     jablonec: [15.171, 50.724],//捷克·亚布洛内茨  jablonec nad nisou
                     southampton: [-1.415, 50.924],//英国·南安普顿
+                    berlin: [13.383, 52.516],//德国·柏林
+                    chattanooga: [-85.266, 35.044],//美国·chattanooga
                     china: {
                         guangzhou: [113.309, 23.101],
                         shenzhen: [114.033, 22.596],
@@ -90,6 +92,8 @@
                         qingdao: [120.365, 36.211],//青岛
                         tianshui: [105.731, 34.581],//天水
                         haining: [120.665, 30.507],//海宁
+                        changchun: [125.318, 43.884],//吉林·长春
+                        dali: [100.202, 25.781],//云南·大理
                         pudong: [121.682, 31.087],//上海·浦东
                         anyang: [114.346, 36.095],//河南·安阳
                         guiyang: [106.717, 26.579],//贵州·贵阳
@@ -115,9 +119,9 @@
             var map = new mapboxgl.Map({
                 container: 'map',
                 // style: 'mapbox://styles/mapbox/streets-v11',
-                style: styleList.pb.style,
+                style: styleList.rg.style,
                 zoom: 15,// 一般是15
-                center: centerList.china.shanghai,
+                center: centerList.chattanooga,
                 scrollZoom: false,
                 boxZoom: false,
                 dragRotate: false,
