@@ -55,6 +55,7 @@
                     sydney: [151.218, -33.878],
                     melbourne: [144.966, -37.823],//澳大利亚·墨尔本
                     brisbane: [153.029, -27.481],//澳大利亚·布里斯班
+                    canberra: [149.128, -35.282],//澳大利亚·堪培拉
                     Amsterdam: [4.896, 52.372],//阿姆斯特丹
                     Sheffield: [-1.470, 53.381],//谢菲尔德
                     Brisbane: [153.023, -27.461],//布里斯班
@@ -72,6 +73,8 @@
                     Wellington: [174.777, -41.288],//新西兰·惠灵顿
                     jablonec: [15.171, 50.724],//捷克·亚布洛内茨  jablonec nad nisou
                     southampton: [-1.415, 50.924],//英国·南安普顿
+                    berlin: [13.383, 52.516],//德国·柏林
+                    chattanooga: [-85.266, 35.044],//美国·chattanooga
                     china: {
                         guangzhou: [113.309, 23.101],
                         shenzhen: [114.033, 22.596],
@@ -90,6 +93,8 @@
                         qingdao: [120.365, 36.211],//青岛
                         tianshui: [105.731, 34.581],//天水
                         haining: [120.665, 30.507],//海宁
+                        changchun: [125.318, 43.884],//吉林·长春
+                        dali: [100.202, 25.781],//云南·大理
                         pudong: [121.682, 31.087],//上海·浦东
                         anyang: [114.346, 36.095],//河南·安阳
                         guiyang: [106.717, 26.579],//贵州·贵阳
@@ -107,7 +112,8 @@
                     bw: {name: '黑白', style: 'mapbox://styles/otherskylam/ckxgykhx00cb914tao6u511js'},
                     rg: {name: '红绿', style: 'mapbox://styles/otherskylam/cl08uh5tc00mj15oa2x1c7ld0'},
                     rg1: {name: '红绿1', style: 'mapbox://styles/otherskylam/cl0tcih7r000i14or33mpq36z'},//备用！（屏蔽字，15以下的问题）-该问题rg已同步解决
-                    mdla: {name: '蒙德里安', style: 'mapbox://styles/otherskylam/cl2t9l1o200zx14o9ktt7kvkn'}
+                    mdla: {name: '蒙德里安', style: 'mapbox://styles/otherskylam/cl2t9l1o200zx14o9ktt7kvkn'},
+                    pb: {name: 'picture book', style: 'mapbox://styles/otherskylam/cl3xbjcc8000214pm5wdr1x0t'}
                 }
 
             mapboxgl.accessToken = 'pk.eyJ1Ijoib3RoZXJza3lsYW0iLCJhIjoiY2t4Z3lkbGRlMDB5aDJvb2N1MjAzYm9tcSJ9.MSF3EUvhmhknQnahDpNAPA';
@@ -115,7 +121,7 @@
                 container: 'map',
                 // style: 'mapbox://styles/mapbox/streets-v11',
                 style: styleList.rg.style,
-                zoom: 14,// 一般是15
+                zoom: 15,// 一般是15
                 center: centerList.china.shanghai,
                 scrollZoom: false,
                 boxZoom: false,
