@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.1.12.4.js"></script>
+    <link rel="stylesheet" href="autoMap.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet"
+          href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css"
+          type="text/css">
+    <script>
+        $(() => {
+            mapboxgl.accessToken = 'pk.eyJ1Ijoib3RoZXJza3lsYW0iLCJhIjoiY2t4Z3lkbGRlMDB5aDJvb2N1MjAzYm9tcSJ9.MSF3EUvhmhknQnahDpNAPA';
+            const map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/otherskylam/cl4hc6244000014s38ajcuz5v',
+                zoom: 11,
+                center: [113.309, 23.101]
+                // scrollZoom: false,
+                // boxZoom: false,
+                // dragRotate: false,
+                // dragPsn: false,
+                // keyboard: false,
+                // doubleClickZoom: false
+            });
+
+            const geocoder = new MapboxGeocoder({
+                accessToken: mapboxgl.accessToken,
+                types: 'country,region,place,postcode,locality,neighborhood'
+            });
+
+            geocoder.addTo('#geocoder');
+
+            geocoder.on('result', (e) => {
+                let center = e.result.center;
+                map.setCenter(center);
+                console.log(map.getZoom());
+            });
+
+            map.on('idle', () => {
+                console.log(map.getCenter());
+            });
+
+            map.on('load', function () {
+                $('.mapboxgl-ctrl-logo').addClass('hide');
+                $('.mapboxgl-ctrl-attrib-inner').addClass('hide');
+                $('.mapboxgl-ctrl-attrib').addClass('hide');
+            })
+
+
+            map.on('zoomend', () => {
+                let level = map.getZoom();
+                level = level.toFixed(2);
+                $('#zoomLevelInfo').val(level);
+            });
+            $('#toZoom').click(() => {
+                map.setZoom($('#zoomLevelInfo').val());
+            })
+            $('#confirmDes').click(() => {
+                $('#cityName').html($('#cityNameInput').val());
+                $('#countryName').html($('#countryNameInput').val());
+            })
+        });
+    </script>
+</head>
+<body>
+<div class="mainContainer">
+    <div class="leftContainer">
+        <div class="picContainer">
+            <div id="map" class="map"></div>
+            <div class="desContainer">
+                <div id="cityName" class="cityName">SHANGHAI</div>
+                <div id="countryName" class="countryName">china</div>
+                <div class="lngLatContainer">
+                    <div class="lng">113°13'59.98"E</div>
+                    <div class="lat">23°10'0.012"N</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rightContainer">
+        <div class="geocoderContainer">
+            <div id="geocoder"></div>
+        </div>
+        <input id="zoomLevelInfo" type="number"><button id="toZoom">zoom</button>
+        <input type="text" id="cityNameInput">
+        <input type="text" id="countryNameInput">
+        <button id="confirmDes">更新信息</button>
+    </div>
+</div>
+</body>
+</html>

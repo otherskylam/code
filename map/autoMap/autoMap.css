@@ -1,0 +1,110 @@
+/*copy tmall*/
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,
+form,fieldset,legend,button,input,textarea,th,td  {margin:0;padding:0;}
+
+body,button,input,select,textarea{font:12px/1.5     tahoma,arial,\5b8b\4f53;}
+
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+
+address,cite,dfn,em,var{font-style:normal;}
+
+code,kbd,pre,samp{font-family:courier new,courier,monospace;}
+
+small{font-size:12px;}
+
+ul,ol{list-style:none;}
+
+a{text-decoration:none;}
+
+a:hover{text-decoration:underline;}
+
+sup{vertical-align:text-top;}
+
+sub{vertical-align:text-bottom;}
+
+legend{color:#000;}
+
+fieldset,img{border:0;}
+
+button,input,select,textarea{font-size:100%;}
+
+table{border-collapse:collapse;border-spacing:0;}
+
+
+/*end of css reset*/
+html body {
+    background: #dde0df;
+}
+
+.hide {
+    display: none !important;
+}
+
+.mainContainer {
+    width: 100%;
+}
+.leftContainer {
+    width: 1000px;
+    height: 1200px;
+    float: left;
+}
+
+.rightContainer {
+    width: 300px;
+    height: 1200px;
+    float: left;
+}
+
+.picContainer {
+    width: 750px;
+    height: 1000px;
+    background: #fff;
+    position: absolute;
+    margin: 30px 0 0 100px;
+}
+
+.map {
+    width: 676px;
+    height: 777px;
+    margin: 37px 37px 0 37px;
+}
+
+.desContainer {
+    text-transform: uppercase;
+    font-family: Calibri;
+    color: #456869;
+}
+
+.cityName {
+    width: 100%;
+    margin-top: 18px;
+    font-size: 72px;
+    line-height: 72px;
+    font-weight: lighter;
+    text-align: center;
+    letter-spacing: 23px;
+}
+.countryName {
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 5px;
+    margin-top: 6px;
+}
+
+.lngLatContainer {
+    margin-top: 5px;
+    font-size: 18px;
+}
+
+.lng {
+    width: 370px;
+    float: left;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.lat {
+    width: 370px;
+    float: right;
+    padding-left: 5px;
+}

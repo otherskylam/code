@@ -109,7 +109,7 @@
                     hengyang: [112.56, 26.91],//衡阳
                     zhuozhou: [116.00, 39.48],//涿州
                     jinan: [117.07, 36.66],//济南
-                    taixing:[120.03, 32.17],//泰兴
+                    taixing: [120.03, 32.17],//泰兴
                     wenzhou: [120.67, 27.98],//温州
                     qingdao: [120.43, 36.18],//青岛
                     nanchang: [115.86, 28.66],//江西·南昌
@@ -134,13 +134,14 @@
                         jixi: [118.57, 30.06],
                         linqu: [118.54, 36.51],//临朐
                         shehong: [105.39, 30.87],//射洪
+                        jianou: [118.31, 27.02],//福建·南平·建瓯
                         helong: [129.01, 42.54]//吉林·延边·和龙
                     }
                 },
                 mapStyleList = ['6ae9cf0954f1151f317d24073fc21ea7', 'fe4d1f1e444be42f42e790efb1b10354', '8ba043063fd4a137c8813ec6af95bb64', '17e7a773be10a2b4ee426069c25f0f0b', '4d3a3c3a4fdeabb729cf9e8423f5fec6']
             var map = new AMap.Map('container', {
-                zoom: 18,// 一般是16
-                center: centerList.daqing,
+                zoom: 17,// 一般是16
+                center: centerList.sLocation.jianou,
                 collision: false,
                 features: ['road', 'bg', 'building'],
                 mapStyle: 'amap://styles/' + mapStyleList[1],

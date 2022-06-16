@@ -113,14 +113,17 @@
                     rg: {name: '红绿', style: 'mapbox://styles/otherskylam/cl08uh5tc00mj15oa2x1c7ld0'},
                     rg1: {name: '红绿1', style: 'mapbox://styles/otherskylam/cl0tcih7r000i14or33mpq36z'},//备用！（屏蔽字，15以下的问题）-该问题rg已同步解决
                     mdla: {name: '蒙德里安', style: 'mapbox://styles/otherskylam/cl2t9l1o200zx14o9ktt7kvkn'},
-                    pb: {name: 'picture book', style: 'mapbox://styles/otherskylam/cl3xbjcc8000214pm5wdr1x0t'}
+                    pb: {name: 'picture book', style: 'mapbox://styles/otherskylam/cl3xbjcc8000214pm5wdr1x0t'},
+                    blue: {name: '克莱因蓝', style: 'mapbox://styles/otherskylam/cl4easxxl000115mz0q9gnbb4'},
+                    blue2: {name: '克莱因蓝', style: 'mapbox://styles/otherskylam/cl4ec3rxa000114mvj8p7zsvj'},
+                    satellite: {name: '卫星地图', style: 'mapbox://styles/otherskylam/cl4gvl5v6000014nth4vbdtg3'}
                 }
 
             mapboxgl.accessToken = 'pk.eyJ1Ijoib3RoZXJza3lsYW0iLCJhIjoiY2t4Z3lkbGRlMDB5aDJvb2N1MjAzYm9tcSJ9.MSF3EUvhmhknQnahDpNAPA';
             var map = new mapboxgl.Map({
                 container: 'map',
                 // style: 'mapbox://styles/mapbox/streets-v11',
-                style: styleList.rg.style,
+                style: styleList.satellite.style,
                 zoom: 15,// 一般是15
                 center: centerList.china.shanghai,
                 scrollZoom: false,
