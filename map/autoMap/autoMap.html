@@ -63,6 +63,34 @@
                 $('#cityName').html($('#cityNameInput').val());
                 $('#countryName').html($('#countryNameInput').val());
             })
+
+            //TODO 考虑西经、南纬（负数），改EW
+            let changeLngLat = () => {
+                let
+                    center = map.getCenter(),
+                    lng = tet(center.lng),
+                    lat = tet(center.lat);
+                console.log(tet(center.lng));
+                $('#lngData').html(lng[0] + '°' + lng[1] + '\'' + lng[2] + '.' + lng[3] + '\"E')
+                $('#latData').html(lat[0] + '°' + lat[1] + '\'' + lat[2] + '.' + lat[3] + '\"W')
+            }
+
+            //TODO 优化所有名称,考虑整数没小数情况等等
+            // let tet = (data, sss) => {
+            function tet(data, sss) {
+                let Ldata = sss ? sss : [];
+                let dataInfo = Ldata.length === 0 ? data : Number(data) * 60;
+                dataInfo = dataInfo.toString().split('.');
+                Ldata.push(dataInfo[0]);
+                if (Ldata.length === 3) {
+                    Ldata.push(dataInfo[1].substr(0, 2));
+                } else {
+                    tet('0.' + dataInfo[1], Ldata);
+                }
+                return Ldata;
+            }
+
+            map.on('idle', changeLngLat);
         });
     </script>
 </head>
@@ -75,8 +103,8 @@
                 <div id="cityName" class="cityName">SHANGHAI</div>
                 <div id="countryName" class="countryName">china</div>
                 <div class="lngLatContainer">
-                    <div class="lng">113°13'59.98"E</div>
-                    <div class="lat">23°10'0.012"N</div>
+                    <div id="lngData" class="lng">113°13'59.98"E</div>
+                    <div id="latData" class="lat">23°10'0.012"N</div>
                 </div>
             </div>
         </div>
@@ -85,7 +113,8 @@
         <div class="geocoderContainer">
             <div id="geocoder"></div>
         </div>
-        <input id="zoomLevelInfo" type="number"><button id="toZoom">zoom</button>
+        <input id="zoomLevelInfo" type="number">
+        <button id="toZoom">zoom</button>
         <input type="text" id="cityNameInput">
         <input type="text" id="countryNameInput">
         <button id="confirmDes">更新信息</button>
