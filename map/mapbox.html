@@ -104,6 +104,9 @@
                         nantong: [120.900, 31.981],//江苏·南通
                         cangzhou: [116.849, 38.303],//河北·沧州
                         puyang: [115.029, 35.763],//河南·濮阳
+                        shanghai1: [121.935, 30.937],//上海·滴水湖
+                        yantai: [121.537, 37.451],//山东·烟台
+                        xian: [108.942, 34.266],//陕西·西安
                         dangshan: [116.345, 34.427],//安徽·宿州·砀山
                         sLocation: {jinwan: [113.336, 22.098]}
                     }
@@ -123,9 +126,9 @@
             var map = new mapboxgl.Map({
                 container: 'map',
                 // style: 'mapbox://styles/mapbox/streets-v11',
-                style: styleList.satellite.style,
+                style: styleList.rg.style,
                 zoom: 15,// 一般是15
-                center: centerList.china.shanghai,
+                center: centerList.china.xian,
                 scrollZoom: false,
                 boxZoom: false,
                 dragRotate: false,
